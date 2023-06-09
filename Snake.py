@@ -9,9 +9,8 @@ class Snake:
     segment_3=Turtle("square")
     
     def __init__(self):
-        self.lost=False
         self.head.penup()
-        self.head.color("white")
+        self.head.color("green")
          
         self.segment_2.penup()
         self.segment_2.color("white")
@@ -31,29 +30,21 @@ class Snake:
         self.head.forward(20)
         
     def up(self):
-        if self.Colision_Check()==True:
-            self.lost=True
-        elif self.head.heading()!=270 and self.Multi_Move_Blocker == False:
+        if self.head.heading()!=270 and self.Multi_Move_Blocker == False:
             self.head.setheading(90)
             self.Multi_Move_Blocker = True
     
     def down(self):
-        if self.Colision_Check()==True:
-            self.lost=True
         if self.head.heading()!=90 and self.Multi_Move_Blocker == False:
             self.head.setheading(270)
             self.Multi_Move_Blocker = True
             
     def right(self):
-        if self.Colision_Check()==True:
-            self.lost=True
         if self.head.heading()!=180 and self.Multi_Move_Blocker == False:
             self.head.setheading(0)
             self.Multi_Move_Blocker = True
             
     def left(self):
-        if self.Colision_Check()==True:
-            self.lost=True
         if self.head.heading()!=0 and self.Multi_Move_Blocker == False:
             self.head.setheading(180)
             self.Multi_Move_Blocker = True
@@ -68,5 +59,5 @@ class Snake:
         
     def Colision_Check(self):
         for n in range(1,len(self.segments)):
-            if self.head.xcor()==self.segments[n].xcor() and self.head.ycor()==self.segments[n].ycor():
+            if round(self.head.xcor())==round(self.segments[n].xcor()) and round(self.head.ycor())==round(self.segments[n].ycor()):
                 return True
