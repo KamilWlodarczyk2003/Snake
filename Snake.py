@@ -59,6 +59,5 @@ class Snake:
         
     def Colision_Check(self):
         for n in range(1,len(self.segments)):
-            print(n)
             if self.head.xcor()==self.segments[n].xcor() and self.head.ycor()==self.segments[n].ycor():
                 return True
