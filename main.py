@@ -1,8 +1,10 @@
 from turtle import Screen
 import time
 from Snake import Snake
+from food import Food
 
 Screen = Screen()
+Food = Food()
 
 Screen.setup(width=600, height= 600)
 Screen.bgcolor("black")
@@ -23,6 +25,9 @@ while game_is_on == True:
     Screen.update()
     time.sleep(0.1)
     snake.move()
+    
+    if snake.segment_1.distance(Food.xcor(),Food.ycor()) < 15:
+        Food.Food_Movement()
     
     
     
