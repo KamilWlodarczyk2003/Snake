@@ -2,9 +2,11 @@ from turtle import Screen
 import time
 from Snake import Snake
 from food import Food
+from score import Score
 
 Screen = Screen()
 Food = Food()
+score=Score()
 
 Screen.setup(width=600, height= 600)
 Screen.bgcolor("black")
@@ -26,8 +28,14 @@ while game_is_on == True:
     time.sleep(0.1)
     snake.move()
     
-    if snake.segment_1.distance(Food.xcor(),Food.ycor()) < 15:
+    if snake.head.distance(Food.xcor(),Food.ycor()) < 15:
         Food.Food_Movement()
+        score.Increase_Score()
+        snake.Increase()
+        
+    if snake.head.xcor()>300 or snake.head.xcor()<-300 or snake.head.ycor()>300 or snake.head.ycor()<-300 or snake.Colision_Check()==True:
+        score.Game_Over()
+        game_is_on=False
     
     
     
