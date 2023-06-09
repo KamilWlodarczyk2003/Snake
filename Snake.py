@@ -10,7 +10,7 @@ class Snake:
     
     def __init__(self):
         self.head.penup()
-        self.head.color("green")
+        self.head.color("white")
          
         self.segment_2.penup()
         self.segment_2.color("white")
