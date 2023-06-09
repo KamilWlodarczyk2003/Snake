@@ -21,5 +21,6 @@ class Score(Turtle):
         
     def Game_Over(self):
         New=Turtle()
+        New.ht()
         New.color("white")
         New.write("Game Over", False,"center",("Courier",15,"normal"))
