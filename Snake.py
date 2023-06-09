@@ -2,6 +2,8 @@ from turtle import Turtle
 
 class Snake:
     
+    Multi_Move_Blocker=False
+    
     head=Turtle("square")
     segment_2=Turtle("square")
     segment_3=Turtle("square")
@@ -28,20 +30,24 @@ class Snake:
         self.head.forward(20)
         
     def up(self):
-        if self.head.heading()!=270:
+        if self.head.heading()!=270 and self.Multi_Move_Blocker == False:
             self.head.setheading(90)
+            self.Multi_Move_Blocker = True
     
     def down(self):
-        if self.head.heading()!=90:
+        if self.head.heading()!=90 and self.Multi_Move_Blocker == False:
             self.head.setheading(270)
+            self.Multi_Move_Blocker = True
             
     def right(self):
-        if self.head.heading()!=180:
+        if self.head.heading()!=180 and self.Multi_Move_Blocker == False:
             self.head.setheading(0)
+            self.Multi_Move_Blocker = True
             
     def left(self):
-        if self.head.heading()!=0:
+        if self.head.heading()!=0 and self.Multi_Move_Blocker == False:
             self.head.setheading(180)
+            self.Multi_Move_Blocker = True
     
     def Increase(self):
         New_Turtle = Turtle("square")
@@ -52,8 +58,7 @@ class Snake:
         self.segments.append(New_Turtle)
         
     def Colision_Check(self):
-        for segment in self.segments:
-            if segment == self.head:
-                pass
-            elif self.head.xcor()==segment.xcor() and self.head.ycor()==segment.ycor():
+        for n in range(1,len(self.segments)):
+            print(n)
+            if self.head.xcor()==self.segments[n].xcor() and self.head.ycor()==self.segments[n].ycor():
                 return True
