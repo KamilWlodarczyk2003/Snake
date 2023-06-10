@@ -4,9 +4,11 @@ class Snake:
     
     Multi_Move_Blocker=False
     
+    
     head=Turtle("square")
     segment_2=Turtle("square")
     segment_3=Turtle("square")
+    segments=[head,segment_2,segment_3]
     
     def __init__(self):
         self.head.penup()
@@ -21,7 +23,7 @@ class Snake:
         self.segment_3.color("white")
         
         self.number_of_segments=2
-        self.segments=[self.head,self.segment_2,self.segment_3]
+        
     
     
     def move(self):
@@ -60,4 +62,9 @@ class Snake:
     def Colision_Check(self):
         for n in range(1,len(self.segments)):
             if round(self.head.xcor())==round(self.segments[n].xcor()) and round(self.head.ycor())==round(self.segments[n].ycor()):
+                return True
+            
+    def Food_Check(self,x,y):
+        for n in range(0,len(self.segments)):
+            if self.segments[n].distance(x,y)<15:
                 return True

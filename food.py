@@ -1,8 +1,11 @@
 from turtle import Turtle
 from random import randint
+from Snake import Snake
 
 
 class Food(Turtle):
+    
+    snake=Snake()
     
     def __init__(self):
         super().__init__()
@@ -14,4 +17,13 @@ class Food(Turtle):
         self.goto(x=randint(-14,14)*20,y=randint(-14,14)*20)
         
     def Food_Movement(self):
-        self.goto(x=randint(-14,14)*20,y=randint(-14,14)*20)
+        new_x=randint(-14,14)*20
+        new_y=randint(-14,14)*20
+        
+        while self.snake.Food_Check(new_x,new_y) == True:
+            new_x=randint(-14,14)*20
+            new_y=randint(-14,14)*20
+        self.goto(new_x,new_y)
+        
+    def Test(self):
+        self.goto(0,0)
