@@ -8,6 +8,9 @@ Screen = Screen()
 food = Food()
 score=Score()
 
+speed=0.1
+SPEED_CHANGE=0.95
+
 Screen.setup(width=600, height= 600)
 Screen.bgcolor("black")
 Screen.title("Snake")
@@ -22,9 +25,11 @@ Screen.onkey(snake.right,"Right")
 Screen.onkey(snake.left,"Left")
 
 game_is_on=True
+n=0
 
 while game_is_on == True:
-    time.sleep(0.1)
+    time.sleep(speed)
+    
     
     if snake.head.xcor()>300 or snake.head.xcor()<-300 or snake.head.ycor()>300 or snake.head.ycor()<-300 or snake.Colision_Check()==True:
         score.Game_Over()
@@ -35,11 +40,17 @@ while game_is_on == True:
     snake.move()
     
     if snake.head.distance(food.xcor(),food.ycor()) < 15:
+        n+=1
         food.Food_Movement()
         score.Increase_Score()
         snake.Increase()
+        
+    
     
     Screen.update()
+    if n==10:
+        speed=speed*SPEED_CHANGE
+        n=0
     
     
 Screen.exitonclick()
