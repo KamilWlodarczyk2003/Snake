@@ -20,7 +20,6 @@ Screen.onkey(snake.down,"Down")
 Screen.onkey(snake.up,"Up")
 Screen.onkey(snake.right,"Right")
 Screen.onkey(snake.left,"Left")
-Screen.onkey(food.Test,"space")
 
 game_is_on=True
 
