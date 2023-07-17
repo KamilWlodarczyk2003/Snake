@@ -28,7 +28,6 @@ with open("C:/Users/venox/AppData/Roaming/Orzel/data.txt",'r+') as high_score_fi
     
     if read > 0:
         score.high_score=read
-        print("Gowna")
     else:
         score.high_score=0
 
