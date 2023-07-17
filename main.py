@@ -11,18 +11,23 @@ snake=Snake()
 food = Food()
 score=Score()
 
+path = os.getenv('APPDATA')
+print(path)
+
+print(f"{path}/Orzel")
+
 try:
-    os.mkdir("C:/Users/venox/AppData/Roaming/Orzel")
+    os.mkdir(f"{path}/Orzel")
 except:
     pass
     
 try:
-    with open("C:/Users/venox/AppData/Roaming/Orzel/data.txt","x+") as high_score_file:
+    with open(f"{path}/Orzel/data.txt","x+") as high_score_file:
         high_score_file.write("0") 
 except:
     pass
 
-with open("C:/Users/venox/AppData/Roaming/Orzel/data.txt",'r+') as high_score_file:
+with open(f"{path}/Orzel/data.txt",'r+') as high_score_file:
     
     read=int(high_score_file.read())
     
@@ -78,11 +83,7 @@ while True:
         speed=speed*SPEED_CHANGE
         n=0
         
-    with open("C:/Users/venox/AppData/Roaming/Orzel/data.txt","w") as high_score:
+    with open(f"{path}/Orzel/data.txt","w") as high_score:
         high_score.write(str(score.high_score))
         
     score.high_score_check()
-
-
-    
-Screen.exitonclick()
