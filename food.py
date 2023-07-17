@@ -24,3 +24,6 @@ class Food(Turtle):
             new_x=randint(-14,14)*20
             new_y=randint(-14,14)*20
         self.goto(new_x,new_y)
+        
+    def Test(self):
+        self.goto(0,0)

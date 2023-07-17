@@ -68,3 +68,19 @@ class Snake:
         for n in range(0,len(self.segments)):
             if self.segments[n].distance(x,y)<15:
                 return True
+            
+    def reset(self):
+        self.head.goto(0,0)
+        self.head.setheading(0)
+         
+        self.segment_2.goto(-20,0)
+
+        self.segment_3.goto(-40,0)
+        
+        self.number_of_segments=2
+        
+        for n in range(2,len(self.segments)):
+            self.segments[n].goto(1000,1000)
+        
+        self.segments.clear()
+        self.segments=[self.head,self.segment_2,self.segment_3]
