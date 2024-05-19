@@ -5,12 +5,12 @@ class Snake:
     Multi_Move_Blocker=False
     
     
-    head=Turtle("square")
-    segment_2=Turtle("square")
-    segment_3=Turtle("square")
+    head=Turtle("square")      #first segmant of snake
+    segment_2=Turtle("square")      #2nd segmant of snake
+    segment_3=Turtle("square")      #3rd segmant of snake
     segments=[head,segment_2,segment_3]
     
-    def __init__(self):
+    def __init__(self):     #set positions of segments and set a number of them
         self.head.penup()
         self.head.color("white")
          
@@ -26,32 +26,32 @@ class Snake:
         
     
     
-    def move(self):
+    def move(self):     #move first segment one block forward and every other segments go to position of previous one
         for n in range(len(self.segments)-1,0,-1):
             self.segments[n].goto( self.segments[n-1].xcor(),  self.segments[n-1].ycor())
         self.head.forward(20)
         
-    def up(self):
+    def up(self):       #set direction up
         if self.head.heading()!=270 and self.Multi_Move_Blocker == False:
             self.head.setheading(90)
             self.Multi_Move_Blocker = True
     
-    def down(self):
+    def down(self):     #set direction down
         if self.head.heading()!=90 and self.Multi_Move_Blocker == False:
             self.head.setheading(270)
             self.Multi_Move_Blocker = True
             
-    def right(self):
+    def right(self):        #set direction right
         if self.head.heading()!=180 and self.Multi_Move_Blocker == False:
             self.head.setheading(0)
             self.Multi_Move_Blocker = True
             
-    def left(self):
+    def left(self):         #set direction left
         if self.head.heading()!=0 and self.Multi_Move_Blocker == False:
             self.head.setheading(180)
             self.Multi_Move_Blocker = True
     
-    def Increase(self):
+    def Increase(self):     #add new segment to the and of a snake
         New_Turtle = Turtle("square")
         New_Turtle.penup()
         New_Turtle.color("white")
@@ -59,17 +59,17 @@ class Snake:
         self.number_of_segments+=1
         self.segments.append(New_Turtle)
         
-    def Colision_Check(self):
+    def Colision_Check(self):       #check if snake hit itself
         for n in range(1,len(self.segments)):
             if round(self.head.xcor())==round(self.segments[n].xcor()) and round(self.head.ycor())==round(self.segments[n].ycor()):
                 return True
             
-    def Food_Check(self,x,y):
+    def Food_Check(self,x,y):       #check if snake ate food
         for n in range(0,len(self.segments)):
             if self.segments[n].distance(x,y)<15:
                 return True
             
-    def reset(self):
+    def reset(self):        #set snake for a new round
         self.head.goto(0,0)
         self.head.setheading(0)
          
